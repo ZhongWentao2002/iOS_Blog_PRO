@@ -23,3 +23,19 @@
 **class_getInstanceSize** 返回的是成员变量（Ivar）所占用的空间
 
 **malloc_size** 返回的是真正分配内存的空间
+
+
+
+### CF (CoreFoundation) 对象最低内存限制
+
+![Snipaste_2022-10-16_10-00-40](Images/Snipaste_2022-10-16_10-00-40.png)
+
+- 如果对齐之后的大小（class_getInstanceSize）小于 16 字节，则返回16字节
+
+
+
+
+
+### 自定义类的底层实现
+
+![image](Images/Snipaste_2022-10-16_10-21-06.png)
