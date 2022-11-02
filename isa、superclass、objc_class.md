@@ -1,11 +1,20 @@
 # OC对象的分类
 
-- **instance **  (**实例**对象)
+### 面试题
 
-- **class**   (**类**对象)
-- **meta-class**   (**元类**对象)
+**对象的isa指针指向哪里？**
+
+- instance对象的isa指向class对象
+
+- class对象的isa指向meta-class对象
 
 
+
+**OC的类信息存放在哪里？**
+
+- 对象方法、属性、成员变量、协议信息，存放在class对象中
+- 类方法，存放在meta-class对象中
+- 成员变量的具体值，存放在instance对象
 
 ### instance 实例对象
 
@@ -105,5 +114,11 @@ typedef struct objc_class *Class
 ```
 
 objc_class 就是 Class 的本质
+
+ro 是 readonly 
+
+rw 是 readwrite
+
+t 是 table（表）
 
 ![image](Images/Snipaste_2022-10-18_19-30-11.png)
