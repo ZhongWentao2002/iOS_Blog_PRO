@@ -144,3 +144,83 @@ block在访问全局变量时，不会捕获到block内部，采取直接访问�
 ![image](Images/Snipaste_2022-11-07_02-05-44.png)
 
 `__NSStackBlock__` 调用copy后，就升级成一个 `__NSMallocBlock__`
+
+所以在开发过程中，我们都要对block进行copy操作，如果block作为属性，用copy修饰，确保block不被销毁
+
+
+
+### Block 的 copy
+
+![image](Images/Snipaste_2022-11-07_05-03-08.png)
+
+# Block 访问 auto 对象
+
+⚠️当bloc访问**OC对象**的时候（基本数据类型指针不行，必须是**id类型**，并且这个id可以为null，总之只要访问id），block内部的 desc 会发生变化，多两个函数
+
+![image](Images/copy-dispose.png)
+
+![image](Images/Snipaste_2022-11-07_16-48-42.png)
+
+
+
+不管是ARC还是MRC，**栈空间的block不会持有外面对象**
+
+栈空间的block本身随时都会被销毁，没必要强引用其他对象
+
+⚠️与访问的对象是强指针还是弱指针**无关**
+
+
+
+**堆空间的block会自动持有外界对象**
+
+ARC不释放是因为**ARC自动调用了copy**，使得栈block变成了堆block
+
+
+
+### 如果block被拷贝到堆上（变成堆block）
+
+- 自动会调用**block内部的copy**函数
+
+- copy函数内部会调用 **_Block_object_assign** 函数
+
+- **_Block_object_assign** 函数会根据auto变量的修饰符（__strong、__**weak**、**__unsafe_unretained** ）做出**相应的操作**，形成强引用（retain）或者弱引用
+
+
+
+
+
+![image](Images/Snipaste_2022-11-07_05-21-37.png)
+
+是因为block对象内部有一个强类型的指针指向外界这个对象，只有当block销毁时，MJPerson会释放
+
+
+
+![image](Images/Snipaste_2022-11-07_06-29-17.png)
+
+
+
+由于这里是 weak 弱引用，所以person离开作用域就销毁了
+
+
+
+![image](Images/Snipaste_2022-11-07_06-43-25.png)
+
+
+
+
+
+**MRC的情况**
+
+
+
+![image](Images/Snipaste_2022-11-07_06-09-43.png)
+
+![image](Images/Snipaste_2022-11-07_06-13-33.png)
+
+### 如果block从堆上移除
+
+- 会调用block内部的dispose函数
+
+- dispose函数内部会调用_Block_object_dispose函数
+
+- _Block_object_dispose函数会自动释放引用的auto变量（release）
