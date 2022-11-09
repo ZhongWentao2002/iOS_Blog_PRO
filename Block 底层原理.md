@@ -215,7 +215,11 @@ ARC不释放是因为**ARC自动调用了copy**，使得栈block变成了堆bloc
 
 ![image](Images/Snipaste_2022-11-07_06-09-43.png)
 
+
+
 ![image](Images/Snipaste_2022-11-07_06-13-33.png)
+
+
 
 ### 如果block从堆上移除
 
@@ -224,3 +228,76 @@ ARC不释放是因为**ARC自动调用了copy**，使得栈block变成了堆bloc
 - dispose函数内部会调用_Block_object_dispose函数
 
 - _Block_object_dispose函数会自动释放引用的auto变量（release）
+
+
+
+# __block 修饰符
+
+默认情况下，block 内部不允许**修改**外界的局部auto变量
+
+注意修改和使用的区别
+
+对于对象来说，调用对象的方法**不属于修改**
+
+修改对象的属性也**不属于修改**
+
+只要不给对象（这个指针）赋值新值，就不算修改
+
+![image](Images/Snipaste_2022-11-08_04-28-32.png)
+
+#### 方法一 改为 static
+
+![image](Images/Snipaste_2022-11-08_04-33-48.png)
+
+因为static变量是通过 **指针** 捕获
+
+
+
+#### 方法二 使用 __block 修饰
+
+![image](Images/Snipaste_2022-11-09_11-22-15.png)
+
+
+
+### __block 的本质
+
+- __block可以用于解决block内部无法修改auto变量值的问题
+
+- __block**不能修饰全局变量、静态变量**（static）
+
+- 编译器会将__block变量**包装成一个对象**
+
+![image](Images/__block.png)
+
+![image](Images/__block_2.png)
+
+
+
+**__block int age = 10 的本质**
+
+![image](Images/Snipaste_2022-11-08_20-43-22.png)
+
+
+
+### __block 的内存管理
+
+- 当block在**栈**上时，并不会对__block变量产生强引用
+
+- 当block被copy到**堆**时
+  - 会调用block内部的**copy**函数
+  - **copy**函数内部会调用**_Block_object_assign**函数
+  - **_Block_object_assign**函数会对**__block变量**形成强引用（retain）
+
+
+
+- 当block从堆中移除时 
+- 会调用block内部的**dispose**函数
+- **dispose**函数内部会调用**_Block_object_dispose**函数
+- **_Block_object_dispose**函数会自动释放引用的**__block变量**（release）
+
+
+
+⚠️ 这里和**栈block访问auto对象，变为栈block的过程很类似**，接下来做出一个区分
+
+
+

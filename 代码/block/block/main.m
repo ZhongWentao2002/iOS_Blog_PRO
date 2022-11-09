@@ -7,17 +7,19 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Person.h"
+
 int main(int argc, const char * argv[]) {
     
-
-    id obj;
+        
+    __block int a = 10;
     
-    void(^block)(void) = [^{
-        NSLog(@"Hello %@",obj);
-    } copy];
+    void(^block)(void) = ^{
+        a = 20;
+    };
     
     block();
-    
+    NSLog(@"%d",a);
     
     
     
