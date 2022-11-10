@@ -26,7 +26,7 @@
 /* Begin PBXFileReference section */
 		5ECA4875291BBD0400ED24D0 /* MJPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPerson.h; sourceTree = "<group>"; };
 		5ECA4876291BBD0400ED24D0 /* MJPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPerson.m; sourceTree = "<group>"; };
-		5ECE6E76291BDDFA001CE233 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5ECE6E79291D3768001CE233 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5EFC876D2918FA800091BA49 /* block */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = block; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EFC87702918FA800091BA49 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,10 +61,10 @@
 		5EFC876F2918FA800091BA49 /* block */ = {
 			isa = PBXGroup;
 			children = (
+				5ECE6E79291D3768001CE233 /* main.cpp */,
 				5EFC87702918FA800091BA49 /* main.m */,
 				5ECA4875291BBD0400ED24D0 /* MJPerson.h */,
 				5ECA4876291BBD0400ED24D0 /* MJPerson.m */,
-				5ECE6E76291BDDFA001CE233 /* main.cpp */,
 			);
 			path = block;
 			sourceTree = "<group>";

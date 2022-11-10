@@ -12,25 +12,24 @@
 typedef void (^MJBlock)(void);
 
 int main(int argc, const char * argv[]) {
-    @autoreleasepool { // MRC
+    @autoreleasepool {
 
-        __block MJPerson *person = [[MJPerson alloc] init];
-
+        MJPerson *person = [[MJPerson alloc] init];
         
-        MJBlock block = [^{
-
-            [person test];
-
-        } copy];
+        __unsafe_unretained MJPerson *weakPerson = person;
         
- 
+        person.block = ^{
+
+            [weakPerson test];
+        };
+        
+        person.block();
+        
+        NSLog(@"%d",[person retainCount]);
+        
         [person release];
-        
-        block();
-        
-        [block release];
-        
-        NSLog(@"Done");
     }
+    
+    NSLog(@"Done");
     return 0;
 }

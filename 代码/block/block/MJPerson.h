@@ -9,7 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^MJBlock)(void);
+
 @interface MJPerson : NSObject
+
+@property (nonatomic, copy) MJBlock block;
 
 - (void)test;
 
