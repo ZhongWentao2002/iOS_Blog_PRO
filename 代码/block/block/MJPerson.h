@@ -1,5 +1,5 @@
 //
-//  Person.h
+//  MJPerson.h
 //  block
 //
 //  Created by Clutch Powers on 2022/11/9.
@@ -9,9 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Person : NSObject
+@interface MJPerson : NSObject
 
-@property (nonatomic, strong) NSString *name;
+- (void)test;
 
 @end
 

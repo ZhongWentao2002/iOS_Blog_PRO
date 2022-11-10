@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5ECA4874291ABAF900ED24D0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA4873291ABAF900ED24D0 /* Person.m */; };
+		5ECA4877291BBD0400ED24D0 /* MJPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA4876291BBD0400ED24D0 /* MJPerson.m */; };
 		5EFC87712918FA800091BA49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC87702918FA800091BA49 /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +24,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5ECA4872291ABAF900ED24D0 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		5ECA4873291ABAF900ED24D0 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		5ECA4875291BBD0400ED24D0 /* MJPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPerson.h; sourceTree = "<group>"; };
+		5ECA4876291BBD0400ED24D0 /* MJPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPerson.m; sourceTree = "<group>"; };
+		5ECE6E76291BDDFA001CE233 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5EFC876D2918FA800091BA49 /* block */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = block; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EFC87702918FA800091BA49 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,8 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				5EFC87702918FA800091BA49 /* main.m */,
-				5ECA4872291ABAF900ED24D0 /* Person.h */,
-				5ECA4873291ABAF900ED24D0 /* Person.m */,
+				5ECA4875291BBD0400ED24D0 /* MJPerson.h */,
+				5ECA4876291BBD0400ED24D0 /* MJPerson.m */,
+				5ECE6E76291BDDFA001CE233 /* main.cpp */,
 			);
 			path = block;
 			sourceTree = "<group>";
@@ -124,8 +126,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ECA4874291ABAF900ED24D0 /* Person.m in Sources */,
 				5EFC87712918FA800091BA49 /* main.m in Sources */,
+				5ECA4877291BBD0400ED24D0 /* MJPerson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +248,7 @@
 		5EFC87752918FA800091BA49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XXQ7M2A3K6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -256,6 +259,7 @@
 		5EFC87762918FA800091BA49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XXQ7M2A3K6;
 				ENABLE_HARDENED_RUNTIME = YES;

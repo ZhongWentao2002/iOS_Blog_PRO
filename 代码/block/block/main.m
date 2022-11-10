@@ -7,21 +7,30 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Person.h"
+#import "MJPerson.h"
+
+typedef void (^MJBlock)(void);
 
 int main(int argc, const char * argv[]) {
-    
+    @autoreleasepool { // MRC
+
+        __block MJPerson *person = [[MJPerson alloc] init];
+
         
-    __block int a = 10;
-    
-    void(^block)(void) = ^{
-        a = 20;
-    };
-    
-    block();
-    NSLog(@"%d",a);
-    
-    
-    
+        MJBlock block = [^{
+
+            [person test];
+
+        } copy];
+        
+ 
+        [person release];
+        
+        block();
+        
+        [block release];
+        
+        NSLog(@"Done");
+    }
     return 0;
 }
