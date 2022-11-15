@@ -207,7 +207,7 @@ ARC不释放是因为**ARC自动调用了copy**，使得栈block变成了堆bloc
 
 
 
-#### **MRC的情况** - 不copy
+#### MRC的情况 - 不copy
 
 ![image](Images/Snipaste_2022-11-07_06-09-43.png)
 
